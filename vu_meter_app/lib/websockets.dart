@@ -2,7 +2,7 @@ import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class WebSocket {
-  static const String _SERVER_ADDRESS = "ws://192.168.1.45:34263";
+  static const String _SERVER_ADDRESS = "ws://192.168.3.157:1337";
   static WebSocketChannel _channel;
   static Function _onMessege;
 

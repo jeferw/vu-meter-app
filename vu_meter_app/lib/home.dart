@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vu_meter_app/color-picker/flutter_hsvcolor_picker.dart';
 
 import 'websockets.dart';
 
@@ -14,6 +15,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     socket = new WebSocket();
+    socket.setFunctionListner(onMessege);
   }
 
   @override
@@ -25,9 +27,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Controle Leds"),
+      appBar: AppBar(
+        title: Text("Controle Leds"),
+      ),
+      body: Container(
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: ColorPicker(
+            onChanged: (value) => {
+                  print(value),
+                },
+          ),
         ),
-        body: Text("Controle Leds"));
+      ),
+    );
+  }
+
+  /*void _pressButton() {
+    socket.sendMessege("Olá");
+  }*/
+
+  void onMessege(messege) {
+    print(messege);
   }
 }
